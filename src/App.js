@@ -1,6 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import LandingPage from './pages/LandingPage';
+import FactorialPage from './pages/FactorialPage';
+
 // Import your page components
 import Frame1 from './pages/frame1';
 import Frame2 from './pages/frame2';
@@ -17,10 +22,11 @@ import Frame11 from './pages/frame11';
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Frame1 />} />
-        <Route path="/frame2" element={<Frame2 />} />
-        <Route path="/frame3" element={<Frame3 />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/factorial" element={<FactorialPage />} />
         <Route path="/frame4" element={<Frame4 />} />
         <Route path="/frame5" element={<Frame5 />} />
         <Route path="/frame6" element={<Frame6 />} />

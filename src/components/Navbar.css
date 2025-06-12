@@ -1,0 +1,84 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #111;
+  padding: 1rem 2rem;
+  color: white;
+  flex-wrap: wrap;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 32px;
+  margin-right: 10px;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #00b7ff;
+}
+
+.navbar-right button {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.learn-more {
+  background: white;
+  color: black;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 1rem auto;
+  display: inline-block;
+}
+
+.signin, .signup {
+  background: #222;
+  color: white;
+  border: 1px solid white;
+}
+
+/* Wrapper for the beta button */
+.beta-button-wrapper {
+  display: flex;
+  justify-content: center;  /* Default: center for mobile */
+  align-items: center;
+  width: 100%;
+  padding: 10px 20px;
+}
+/* RESPONSIVE BEHAVIOR */
+
+@media (min-width: 768px) {
+  .beta-button-wrapper {
+   
+    justify-content: flex-end;     /* Align to right */
+    position: absolute;
+    top: 2rem;                   /* Adjust vertical position */
+    right: -15rem;                   /* Align right properly */
+    width: auto;                  /* Don't stretch */
+  }
+
+  .navbar {
+    flex-wrap: nowrap;
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .beta-button-wrapper {
+    position: absolute;
+    right: 2px;
+    top: 3rem;
+  }
+}
