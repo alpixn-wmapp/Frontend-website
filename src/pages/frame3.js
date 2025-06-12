@@ -62,17 +62,7 @@ function App() {
           </div>
 
          </div>
-          {/* <h2 className="text-xl font-semibold mb-2">New</h2>
-          <p className="text-sm text-gray-400 mb-4">The Latest And Greatest Submissions.</p>
-          <div className="grid ml- grid-cols-1 md:grid-cols-3 gap-6">
-            {features.map((feature, idx) => (
-              <FeatureCard
-                key={idx}
-                {...feature}
-                onToggle={() => toggleFeature(idx)}
-              />
-            ))}
-          </div> */}
+     
         </div>
       </div>
     </div>
