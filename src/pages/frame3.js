@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
@@ -6,7 +7,8 @@ import { CiExport } from "react-icons/ci";
 import initialFeatures from "../data/features1";
 import { FiEdit } from "react-icons/fi";
 function App() {
-  const [features, setFeatures] = useState(initialFeatures);
+
+    const [features, setFeatures] = useState(initialFeatures);
 
   const toggleFeature = (index) => {
     const updated = features.map((feature, i) =>
@@ -14,55 +16,52 @@ function App() {
     );
     setFeatures(updated);
   };
-  return (
+ return (
     <div
-      className="flex h-screen text-white"
-      style={{
-        backgroundImage: `
+  className="flex h-screen text-white"
+  style={{
+    backgroundImage: `
       radial-gradient(at left top, #0d1a2a, transparent 30%),
       radial-gradient(at right top, #3e6ca8, transparent 30%),
       radial-gradient(at left bottom, #3e6ca8, transparent 30%),
       radial-gradient(at right bottom, #0d1a2a, transparent 30%)
     `,
-        backgroundColor: "#0d1a2a",
-      }}
-    >
+    backgroundColor: "#0d1a2a"
+  }}
+>
       <Sidebar />
       <div className="flex-1 overflow-auto">
         <Header />
         <div className="p-6  ">
-          <h1 className="text-3xl mt-10 text-center font-bold mb-2">
-            Select Functional Features For Your App
-          </h1>
+          <h1 className="text-3xl mt-10 text-center font-bold mb-2">Select Functional Features For Your App</h1>
           <p className="mb-6 mt-4 text-center text-md text-gray-300">
-            Choose The Building Blocks Your App Needs. You Can Add, Remove, Or
-            Customize Features At Any Time.
+            Choose The Building Blocks Your App Needs. You Can Add, Remove, Or Customize Features At Any Time.
           </p>
           <div className="flex justify-center gap-4 mb-6">
+           
             <button className="bg-gradient-to-r from-yellow-400  to-blue-500  font-light py-2 px-4 rounded-lg">
               <FiEdit className="inline mr-2 mb-1 text-2xl" />
               Edit App Details
             </button>
             <button className="border border-white text-white py-2 px-4 rounded hover:bg-white hover:text-black">
-              <CiExport className="inline mr-2 mb-1 text-2xl" />
+             <CiExport className="inline mr-2 mb-1 text-2xl" />
               Export Setup
             </button>
           </div>
-          <div className="ml-10">
-            <h2 className="text-xl font-semibold mb-2">New</h2>
-            <p className="text-sm text-gray-400 mb-4">
-              The Latest And Greatest Submissions.
-            </p>
-            <div className="grid ml- grid-cols-1 md:grid-cols-3 gap-6">
-              {features.map((feature, idx) => (
-                <FeatureCard
-                  key={idx}
-                  {...feature}
-                  onToggle={() => toggleFeature(idx)}
-                />
-              ))}
-            </div>
+         <div className="ml-10">
+           <h2 className="text-xl font-semibold mb-2">New</h2>
+          <p className="text-sm text-gray-400 mb-4">The Latest And Greatest Submissions.</p>
+          <div className="grid ml- grid-cols-1 md:grid-cols-3 gap-6">
+            {features.map((feature, idx) => (
+              <FeatureCard
+                key={idx}
+                {...feature}
+                onToggle={() => toggleFeature(idx)}
+              />
+            ))}
           </div>
+
+         </div>
           {/* <h2 className="text-xl font-semibold mb-2">New</h2>
           <p className="text-sm text-gray-400 mb-4">The Latest And Greatest Submissions.</p>
           <div className="grid ml- grid-cols-1 md:grid-cols-3 gap-6">
@@ -80,6 +79,8 @@ function App() {
   );
 }
 
+
+
 export default App;
 // import React from "react";
 
@@ -96,6 +97,7 @@ export default App;
 //         {/* Sidebar */}
 //         <div className="w-1/4 h-[500px] border-r border-white/10 bg-black p-5 flex flex-col gap-6">
 //           <div className="text-center text-white text-lg font-semibold">Forge Lab</div>
+
 
 //           <div className="flex flex-col gap-4 p-3 ">
 //             {["App type", "Features", "UI components", "Logic & workflow", "Export"].map((item) => (
