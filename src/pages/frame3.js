@@ -2,10 +2,16 @@ import React from 'react'
 
 const frame3 = () => {
   return (
+    <>
     <div>
-      <h1>hello</h1>
-      
+    <div className='m-5'>
+      left bar
+
     </div>
+    </div>
+      
+      
+    </>
   )
 }
 
