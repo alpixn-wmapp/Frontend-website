@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-// Import your page components
+import AppLayout from './layout/AppLayout';
+
 import Frame1 from './pages/frame1';
 import Frame2 from './pages/frame2';
 import Frame3 from './pages/frame3';
@@ -13,11 +14,23 @@ import Frame8 from './pages/frame8';
 import Frame9 from './pages/frame9';
 import Frame10 from './pages/frame10';
 import Frame11 from './pages/frame11';
+import FeaturesPage from './pages/FeaturesPage';
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* Only /features has Sidebar via AppLayout */}
+        <Route
+          path="/features"
+          element={
+            <AppLayout>
+              <FeaturesPage />
+            </AppLayout>
+          }
+        />
+
+        {/* All other frames render normally without sidebar */}
         <Route path="/" element={<Frame1 />} />
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />
