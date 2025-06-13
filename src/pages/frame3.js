@@ -1,31 +1,12 @@
-<<<<<<< HEAD
 import React from "react";
 
 const Frame3 = () => {
   return (
-<<<<<<< HEAD
     <>
       <div className="bg-gray-800 h-screen w-screen ">
         <div className=" h-10  bg-gray-900">
           <h1 className="text-white">header</h1>
         </div>
-=======
-    <div>
-        <h1 className='text-7xl text-black'>frame3</h1>
-=======
-import React from 'react'
-
-const frame3 = () => {
-  return (
-    <div>
-        <h1 className='text-blue text-5xl'>THi is third frame3</h1>
->>>>>>> 50c29cbb3440a06069e22f26f21bd644b3b3f7f2
-      
-    </div>
-  )
-}
-<<<<<<< HEAD
->>>>>>> 11b9c57 (start-wo)
 
 
         <div className="bg-gray-800">
@@ -67,7 +48,3 @@ const frame3 = () => {
 };
 
 export default Frame3;
-=======
-
-export default frame3
->>>>>>> 50c29cbb3440a06069e22f26f21bd644b3b3f7f2
