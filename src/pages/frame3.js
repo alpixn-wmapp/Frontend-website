@@ -2,11 +2,20 @@ import React from "react";
 
 const Frame3 = () => {
   return (
+<<<<<<< HEAD
     <>
       <div className="bg-gray-800 h-screen w-screen ">
         <div className=" h-10  bg-gray-900">
           <h1 className="text-white">header</h1>
         </div>
+=======
+    <div>
+        <h1 className='text-7xl text-black'>frame3</h1>
+      
+    </div>
+  )
+}
+>>>>>>> 11b9c57 (start-wo)
 
 
         <div className="bg-gray-800">
