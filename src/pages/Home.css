@@ -1,0 +1,111 @@
+.home {
+  padding: 3rem 2rem;
+  color: white;
+  text-align: center;
+  background-color: #0c0c0c;
+  min-height: 100vh;
+}
+
+.home h1 {
+  font-size: 2.5rem;
+  color: #00b7ff;
+}
+
+.subtext {
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.prompt-box {
+  background: #111;
+  border-radius: 12px;
+  padding: 1rem;
+  width: 80%;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.prompt-box textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  resize: none;
+  font-size: 1rem;
+  height: 100px;
+  outline: none;
+}
+
+.prompt-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  color: #888;
+}
+
+.prompt-footer .submit-btn {
+  background-color: #00b7ff;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.options button {
+  margin: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: #222;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* src/pages/Home.css */
+.community-heading {
+  font-size: 24px;
+  margin-top: 40px;
+  color: white;
+}
+
+.community-projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);  /* 🔒 Exactly 3 columns */
+  gap: 30px;
+  margin-top: 20px;
+  padding: 0 2rem;
+  max-width: 960px;                       /* 🔒 Prevents expanding beyond 3 cards */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .community-projects {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 50px;
+    gap: 40px;
+  }
+}
+
+/* Responsive - Small Screens */
+@media (max-width: 600px) {
+  .community-projects {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 0 20px;
+    gap: 30px;
+  }
+
+  .card-thumbnail {
+    height: 180px; /* Improve visibility */
+  }
+
+  .card h3 {
+    font-size: 18px;
+  }
+
+  .views {
+    font-size: 14px;
+  }
+}

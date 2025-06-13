@@ -2,7 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Import your page components
-import Frame1 from './pages/frame1';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import LandingPage from './pages/LandingPage';
+import FactorialPage from './pages/FactorialPage';
 import Frame2 from './pages/frame2';
 import Frame3 from './pages/frame3';
 import Frame4 from './pages/frame4';
@@ -17,8 +20,11 @@ import Frame11 from './pages/frame11';
 function App() {
   return (
     <Router>
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Frame1 />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/landing" element={<LandingPage />} />
+        <Route path="/factorial" element={<FactorialPage />} />
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />
         <Route path="/frame4" element={<Frame4 />} />
