@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import AppLayout from './layout/AppLayout';
+import Sidebar from './components/Sidebar';
+
+import UIComponentsPage from './pages/UIComponentsPage';
+import FeaturesPage from './pages/FeaturesPage';
+import LogicWorkflowPage from './pages/LogicWorkflowPage';
 
 import Frame1 from './pages/frame1';
 import Frame2 from './pages/frame2';
@@ -14,23 +18,47 @@ import Frame8 from './pages/frame8';
 import Frame9 from './pages/frame9';
 import Frame10 from './pages/frame10';
 import Frame11 from './pages/frame11';
-import FeaturesPage from './pages/FeaturesPage';
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Only /features has Sidebar via AppLayout */}
+        {/* 🟦 Pages that need Sidebar */}
         <Route
           path="/features"
           element={
-            <AppLayout>
-              <FeaturesPage />
-            </AppLayout>
+            <div className="flex">
+              <Sidebar />
+              <div className="flex-1 ml-60">
+                <FeaturesPage />
+              </div>
+            </div>
           }
         />
+        <Route
+          path="/ui-components"
+          element={
+            <div className="flex">
+              <Sidebar />
+              <div className="flex-1 ml-60">
+                <UIComponentsPage />
+              </div>
+            </div>
+          }
+        />
+          <Route
+    path="/logic-workflow"
+    element={
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1 ml-60">
+          <LogicWorkflowPage />
+        </div>
+      </div>
+    }
+  />
 
-        {/* All other frames render normally without sidebar */}
+        {/* 🔲 Full-page frames (no sidebar) */}
         <Route path="/" element={<Frame1 />} />
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />
