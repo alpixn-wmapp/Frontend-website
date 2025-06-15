@@ -2,8 +2,8 @@
 
 import TopBarButtons from '../components/TopBarButtons';
 import AppLayout from '../layout/AppLayout';
-import ThemeCard from '../components/ThemeCard';
-import ColorPaletteRow from '../components/ColorPaletteRow';
+import ThemeCard from '../components/ui_component/ThemeCard';
+import ColorPaletteRow from '../components/ui_component/ColorPaletteRow';
 
 const themes = ['Light', 'Neon', 'Dark', 'Minimal'];
 const colorPalettes = [
