@@ -1,6 +1,7 @@
-// pages/UIComponentsPage.jsx
-import Sidebar from '../components/Sidebar';
+// src/pages/UIComponentsPage.jsx
+
 import TopBarButtons from '../components/TopBarButtons';
+import AppLayout from '../layout/AppLayout';
 import ThemeCard from '../components/ThemeCard';
 import ColorPaletteRow from '../components/ColorPaletteRow';
 
@@ -15,41 +16,34 @@ const colorPalettes = [
 
 const UIComponentsPage = () => {
   return (
-    <div className="flex bg-black min-h-screen text-white">
-      <Sidebar />
-
-      <main className="flex-1 ml-60 px-10 py-8 relative">
+    <AppLayout>
+      {/* ✅ Top-right buttons only */}
+      <div className="flex justify-end mb-9 w-full">
         <TopBarButtons />
+      </div>
 
-        {/* Title */}
-        <div className="mb-10">
-          <h1 className="text-lg font-semibold text-white">Untitled</h1>
-          <p className="text-xs text-gray-500">Last edited just now</p>
-        </div>
+      {/* UI Theme Section */}
+      <h2 className="text-xl font-bold mb-3">UI Theme</h2>
+      <div className="flex gap-5 mb-12">
+        {themes.map((theme, idx) => (
+          <ThemeCard key={idx} label={theme} selected={theme === 'Dark'} />
+        ))}
+      </div>
 
-        {/* UI Theme */}
-        <h2 className="text-xl font-bold mb-3">UI Theme</h2>
-        <div className="flex gap-5 mb-12">
-          {themes.map((theme, idx) => (
-            <ThemeCard key={idx} label={theme} selected={theme === 'Dark'} />
-          ))}
-        </div>
+      {/* UI Color Palette Section */}
+      <h2 className="text-xl font-bold mb-3">UI Color Palette</h2>
+      <div className="grid grid-cols-2 gap-y-6 gap-x-12 mb-12">
+        {colorPalettes.map((row, idx) => (
+          <ColorPaletteRow key={idx} colors={row} />
+        ))}
+      </div>
 
-        {/* UI Color Palette */}
-        <h2 className="text-xl font-bold mb-3">UI Color Palette</h2>
-        <div className="grid grid-cols-2 gap-y-6 gap-x-12 mb-12">
-          {colorPalettes.map((row, idx) => (
-            <ColorPaletteRow key={idx} colors={row} />
-          ))}
-        </div>
-
-        {/* Add Images Button */}
-        <button className="px-5 py-2 border border-yellow-400 text-yellow-400 rounded-md hover:bg-yellow-400 hover:text-black transition font-semibold flex items-center gap-2 border-dashed">
-          Add images
-          <span className="text-lg font-bold">＋</span>
-        </button>
-      </main>
-    </div>
+      {/* ✅ Add Images Button styled like others */}
+      <button className="flex items-center gap-2 px-4 py-2 border border-blue-500 rounded-md bg-black text-white hover:border-blue-500 hover:text-blue-400 transition">
+        <span>Add images</span>
+        <span className="text-xl font-bold">＋</span>
+      </button>
+    </AppLayout>
   );
 };
 

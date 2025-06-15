@@ -1,12 +1,17 @@
 // src/layout/AppLayout.js
 
-import Sidebar from './Sidebar';
+import Sidebar from "./Sidebar";
 
 const AppLayout = ({ children }) => {
   return (
-    <div className="flex min-h-screen bg-black text-white">
+    <div className="flex bg-black min-h-screen text-white">
+      {/* Sidebar takes fixed space */}
       <Sidebar />
-      <main className="flex-1">{children}</main>
+
+      {/* Main content with left margin and padding */}
+      <main className="flex-1 ml-60 px-10 py-8 relative">
+        {children}
+      </main>
     </div>
   );
 };

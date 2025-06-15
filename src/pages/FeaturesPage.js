@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { FaRegStickyNote } from 'react-icons/fa';
 import { FiUpload } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
-import FeatureToggle from '../components/FeatureToggle';
+import FeatureToggle from '../components/feature/FeatureToggle';
+
 
 const featuresList = [
   "Database (Cloud or Local)",

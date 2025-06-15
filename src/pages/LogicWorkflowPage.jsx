@@ -1,30 +1,41 @@
-// pages/LogicWorkflowPage.jsx
-import Sidebar from '../components/Sidebar';
+// src/pages/LogicWorkflowPage.jsx
+
 import TopBarButtons from '../components/TopBarButtons';
+import { useNavigate } from 'react-router-dom';
 
 const LogicWorkflowPage = () => {
+  const navigate = useNavigate();
+
+  const handleNext = () => {
+    navigate('/export'); // or wherever your next step is
+  };
+
   return (
-    <div className="flex bg-black min-h-screen text-white">
-      <Sidebar />
-
-      <main className="flex-1 ml-60 px-10 py-8 relative">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden px-10 py-8">
+      {/* Top Header */}
+      <div className="flex items-start justify-end mb-6">
+        {/* Only Right Buttons */}
         <TopBarButtons />
+      </div>
 
-        {/* Page Title */}
-        <div className="mb-8">
-          <h1 className="text-xl font-bold text-white">Logic & Workflow</h1>
-          <p className="text-sm text-gray-500">Last edited just now</p>
-        </div>
+      {/* Centered Diagram */}
+      <div className="flex justify-center items-center min-h-[70vh]">
+        <img
+          src="/assets/flowdiagram.png"
+          alt="Logic and Workflow Diagram"
+          className="w-[320px] md:w-[420px] h-auto border border-blue-500 rounded"
+        />
+      </div>
 
-        {/* Workflow Image Centered */}
-        <div className="flex justify-center items-center min-h-[70vh]">
-          <img
-            src="/assets/flowdiagram.png"
-            alt="Logic and Workflow Diagram"
-            className="w-[288px] h-auto border border-blue-500 rounded-lg shadow-lg"
-          />
-        </div>
-      </main>
+      {/* Bottom Right "Next" Button */}
+      <div className="absolute bottom-6 right-10">
+        <button
+          onClick={handleNext}
+          className="text-xs text-blue-500 border border-blue-500 rounded px-4 py-1 hover:bg-blue-600 hover:text-white transition"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 };
