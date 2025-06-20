@@ -30,7 +30,7 @@ const frame1 = () => {
   };
 
   return (
-    <div className="bg-zinc-800 text-white min-h-screen font-sans">
+    <div className="bg-zinc-900 text-white min-h-screen font-sans">
       {/* Header */}
       <>
   {/* Navbar */}
@@ -68,12 +68,13 @@ const frame1 = () => {
         </p>
 
          {/* Prompt Box */}
-        <div className="mt-10 w-full max-w-4xl mx-auto relative">
-          <div className="bg-black border border-gray-600 rounded-md overflow-hidden">
+        <div className="mt-10 max-w-2xl mx-auto relative">
+          <div className="bg-black border border-gray-700 rounded-2xl overflow-hidden">
             <textarea
               className="w-full bg-transparent text-white p-4 resize-none focus:outline-none rounded-lg"
               placeholder="Ask us to create a prototype..."
-              rows={2}
+              rows={1}
+              style={{ height: "70px" }}
             ></textarea>
 
             {/* Inline buttons inside the same container */}
@@ -123,7 +124,7 @@ const frame1 = () => {
       </section>
 
       {/* Community Projects Grid */}
-        <section className="pb-16 bg-zinc-800 text-white">
+        <section className="pb-16 bg-zinc-900 text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-xl font-semibold mb-1">From the Community</h2>
             <p className="text-sm text-gray-400 mb-6">
