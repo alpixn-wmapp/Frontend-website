@@ -39,10 +39,10 @@ const UIComponentsPage = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-xs px-2 py-1 rounded-md   border transition ${
+                className={`text-xs px-2 py-1 rounded-md  border transition ${
                   activeCategory === cat
                     ? "bg-white text-black "
-                    : "text-gray-300 border-gray-800 hover:bg-white/10"
+                    : "text-gray-300 border-gray-600 hover:bg-white/10"
                 }`}
               >
                 {cat}
