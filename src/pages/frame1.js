@@ -1,5 +1,7 @@
 import React from "react";
 import { FaArrowUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 const footerData = [
   {
     title: "Company",
@@ -29,6 +31,11 @@ const frame1 = () => {
     document.getElementById("fileInput").click();
   };
 
+  const navigate = useNavigate();
+
+  const goToSignIn = () => navigate("/signin");
+  const goToSignUp = () => navigate("/signup");
+
   return (
     <div className="bg-zinc-900 text-white min-h-screen font-sans">
       {/* Header */}
@@ -42,8 +49,18 @@ const frame1 = () => {
       </span>
     </div>
     <div>
-      <button className="bg-white text-black px-4 py-1 rounded hover:bg-zinc-800 hover:text-white">Sign In</button>
-      <button className="bg-zinc-800 ml-2 text-white px-4 py-1 rounded hover:bg-white hover:text-zinc-800">Sign Up</button>
+     <button
+        onClick={goToSignIn}
+        className="bg-white text-black px-4 py-1 rounded hover:bg-zinc-800 hover:text-white"
+      >
+        Sign In
+      </button>
+       <button
+        onClick={goToSignUp}
+        className="bg-zinc-800 ml-2 text-white px-4 py-1 rounded hover:bg-white hover:text-zinc-800"
+      >
+        Sign Up
+      </button>
     </div>
   </header>
 

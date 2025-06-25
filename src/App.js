@@ -14,6 +14,9 @@ import Frame9 from './pages/frame9';
 import Frame10 from './pages/frame10';
 import Frame11 from './pages/frame11';
 
+import Signup from './routes/signup/signup';
+import SignIn from './routes/signin/signin';
+
 function App() {
   return (
     <Router>
@@ -29,6 +32,10 @@ function App() {
         <Route path="/frame9" element={<Frame9 />} />
         <Route path="/frame10" element={<Frame10 />} />
         <Route path="/frame11" element={<Frame11 />} />
+
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<SignIn />} />
+        
       </Routes>
     </Router>
   );
