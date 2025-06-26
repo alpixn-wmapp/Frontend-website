@@ -1,31 +1,48 @@
 import React from "react";
-import { FaCubes, FaLayerGroup, FaProjectDiagram, FaDownload, FaSignOutAlt } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
+import {
+  FaCubes,
+  FaLayerGroup,
+  FaProjectDiagram,
+  FaDownload,
+  FaSignOutAlt,
+} from "react-icons/fa";
 import { TiExport } from "react-icons/ti";
+
 const Sidebar = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const navItems = [
-    { icon: FaCubes, label: "App Type" },
-    { icon: FaLayerGroup, label: "Features" },
-    { icon: FaProjectDiagram, label: "UI Components" },
-    { icon: FaDownload, label: "Logic Workflow" },
-    { icon: TiExport, label: "Export" },
+    { icon: FaCubes, label: "App Type", route: "apptype" },
+    { icon: FaLayerGroup, label: "Features", route: "features" },
+    { icon: FaProjectDiagram, label: "UI Components", route: "uicomponents" },
+    { icon: FaDownload, label: "Logic Workflow", route: "logicworkflow" },
+    { icon: TiExport, label: "Export", route: "export" },
   ];
 
   return (
-    <aside className="w-64 bg-[#021122] flex flex-col border-r border-white justify-between py-6 px-4">
+    <aside className="w-64 bg-[#021122] flex flex-col border-r border-white/10 justify-between py-6 px-4">
       <div>
         <h1 className="text-2xl font-bold mb-8 text-blue-400">NeuraForge</h1>
-        <ul>
-          {navItems.map((item, index) => (
-            <li
-              key={index}
-              className={`flex items-center text-white py-2 px-2 rounded hover:bg-[#0a2540] cursor-pointer }`}
-            >
-              <item.icon className="mr-3 " /> {item.label}
-            </li>
-          ))}
+        <ul className="space-y-1">
+          {navItems.map(({ icon: Icon, label, route }, index) => {
+            const isActive = location.pathname.includes(route);
+            return (
+              <li
+                key={index}
+                onClick={() => navigate(`/${route}`)}
+                className={`flex items-center py-2 px-3 rounded cursor-pointer transition duration-200
+                  ${isActive ? "bg-[#0a2540] text-blue-400" : "text-white hover:bg-[#0a2540]"}`}
+              >
+                <Icon className="mr-3 text-lg" />
+                <span className="text-sm">{label}</span>
+              </li>
+            );
+          })}
         </ul>
       </div>
-      <button className="flex items-center text-gray-400 hover:text-white">
+      <button className="flex items-center text-gray-400 hover:text-white mt-8 transition">
         <FaSignOutAlt className="mr-2" /> Logout
       </button>
     </aside>
@@ -33,3 +50,47 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
+
+
+// import React from "react";
+// import {
+//   FaCubes,
+//   FaLayerGroup,
+//   FaProjectDiagram,
+//   FaDownload,
+//   FaSignOutAlt,
+// } from "react-icons/fa";
+// import { TiExport } from "react-icons/ti";
+// const Sidebar = () => {
+//   const navItems = [
+//     { icon: FaCubes, label: "App Type" },
+//     { icon: FaLayerGroup, label: "Features" },
+//     { icon: FaProjectDiagram, label: "UI Components" },
+//     { icon: FaDownload, label: "Logic Workflow" },
+//     { icon: TiExport, label: "Export" },
+//   ];
+
+//   return (
+//     <aside className="w-64 bg-[#021122] flex flex-col border-r border-white justify-between py-6 px-4">
+//       <div>
+//         <h1 className="text-2xl font-bold mb-8 text-blue-400">NeuraForge</h1>
+//         <ul>
+//           {navItems.map((item, index) => (
+//             <li
+//               key={index}
+//               className={`flex items-center text-white py-2 px-2 rounded hover:bg-[#0a2540] cursor-pointer }`}
+//             >
+//               <item.icon className="mr-3 " /> {item.label}
+//             </li>
+//           ))}
+//         </ul>
+//       </div>
+//       <button className="flex items-center text-gray-400 hover:text-white">
+//         <FaSignOutAlt className="mr-2" /> Logout
+//       </button>
+//     </aside>
+//   );
+// };
+
+// export default Sidebar;

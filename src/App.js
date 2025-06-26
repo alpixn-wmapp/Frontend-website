@@ -13,12 +13,19 @@ import Frame8 from './pages/frame8';
 import Frame9 from './pages/frame9';
 import Frame10 from './pages/frame10';
 import Frame11 from './pages/frame11';
+import Features from './components/Features';
+import Uicomponents from './components/Uicomponents';
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Frame1 />} />
+        
+        <Route path="features" element={<Features />} />
+        <Route path="uicomponents" element={<Uicomponents />} />
+       
+
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />
         <Route path="/frame4" element={<Frame4 />} />
