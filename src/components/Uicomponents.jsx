@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // ✅ React Router hook
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import FeatureCard from "../components/FeatureCard";
 import initialFeatures from "../data/features2";
 
 const categories = [
@@ -19,6 +19,8 @@ const Uicomponents = () => {
   const [features, setFeatures] = useState(initialFeatures);
   const [activeCategory, setActiveCategory] = useState("Landing Pages");
 
+  const navigate = useNavigate(); // ✅ Initialize navigation
+
   const toggleFeature = (index) => {
     const updated = features.map((feature, i) =>
       i === index ? { ...feature, active: !feature.active } : feature
@@ -27,33 +29,50 @@ const Uicomponents = () => {
   };
 
   return (
-    <div className="flex h-screen text-white bg-[#0d1a2a]" 
-     style={{
-       backgroundImage: `
-    radial-gradient(circle at left top, rgb(0 0 0), transparent 40%),
-    radial-gradient(circle at right center, rgb(9 37 76), transparent 40%),
-    radial-gradient(circle at left bottom, rgb(3 21 44), transparent 40%),
-    radial-gradient(circle at 85% 75%, rgb(7 22 41), transparent 50%)
-  `,
-  backgroundColor: "rgb(4 10 17)",
-  minHeight: "100vh",
-  color: "white"
-  }}
+    <div
+      className="flex h-screen text-white bg-[#0d1a2a]"
+      style={{
+        backgroundImage: `
+          radial-gradient(circle at left top, rgb(0 0 0), transparent 40%),
+          radial-gradient(circle at right center, rgb(9 37 76), transparent 40%),
+          radial-gradient(circle at left bottom, rgb(3 21 44), transparent 40%),
+          radial-gradient(circle at 85% 75%, rgb(7 22 41), transparent 50%)
+        `,
+        backgroundColor: "rgb(4 10 17)",
+        minHeight: "100vh",
+        color: "white",
+      }}
     >
       <Sidebar />
       <div className="flex-1 overflow-y-auto">
         <Header />
 
-        <div className="px-10 pt-10">
+        <div className="px-10 pt-10 relative">
+          {/* Top Navigation Buttons */}
+          <div className="flex justify-between mb-6">
+            <button
+              onClick={() => navigate("/features")}
+              className="px-4 py-2 text-sm bg-white text-black rounded hover:bg-gray-200"
+            >
+              ← Back to Features
+            </button>
+            <button
+              onClick={() => navigate("/uicomponents2")}
+              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Continue to Theme Setup →
+            </button>
+          </div>
+
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-4  justify-start mb-6">
+          <div className="flex flex-wrap gap-4 justify-start mb-6">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-xs px-2 py-1 rounded-md  border transition ${
+                className={`text-xs px-2 py-1 rounded-md border transition ${
                   activeCategory === cat
-                    ? "bg-white text-black "
+                    ? "bg-white text-black"
                     : "text-gray-300 border-gray-600 hover:bg-white/10"
                 }`}
               >
@@ -75,8 +94,7 @@ const Uicomponents = () => {
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-1">
-                 
-                  <p className="text-sm text-gray-400 ">
+                  <p className="text-sm text-gray-400">
                     {feature.description}
                   </p>
                 </div>
