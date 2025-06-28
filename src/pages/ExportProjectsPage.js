@@ -1,36 +1,8 @@
-// import React from 'react';
-// import Topbar from '../components/logic_work_flow/Topbar';
-// import Sidebar from '../components/export_project/Sidebar';
-
-// const ExportProjectsPage = () => {
-//   return (
-//     <div className="flex h-screen">
-//       {/* Sidebar */}
-//       <Sidebar />
-
-//       {/* Main content with Topbar and image */}
-//       <div className="flex-1 flex flex-col">
-//         {/* Topbar */}
-//         <Topbar />
-
-//         {/* Centered Image */}
-//         <div className="flex-1 flex justify-center items-center bg-[#021728]">
-//           <img
-//             src="/assets/image2.png"
-//             alt="Export Visual"
-//             className="w-[700px] h-auto object-contain"
-//           />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ExportProjectsPage;
 
 import React from 'react';
-import Topbar from '../components/logic_work_flow/Topbar';
-import Sidebar from '../components/export_project/Sidebar';
+
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
 
 const cards = [
   {

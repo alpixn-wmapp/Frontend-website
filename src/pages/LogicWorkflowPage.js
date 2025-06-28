@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from '../components/logic_work_flow/Sidebar';
-import Topbar from '../components/logic_work_flow/Topbar';
+import Sidebar from '../components/Sidebar';
+import Topbar from '../components/Topbar';
 
 const LogicWorkflowPage = () => {
   return (
