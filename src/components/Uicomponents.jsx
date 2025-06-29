@@ -104,7 +104,7 @@ const Uicomponents = () => {
             </button>
             <button
               onClick={() => navigate("/uicomponents2")}
-              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg"
             >
               Continue to Theme Setup →
             </button>
