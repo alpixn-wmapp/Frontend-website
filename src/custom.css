@@ -36,3 +36,21 @@
   background-color: #888;
   border-radius: 3px;
 }
+
+.btn-animated-gradient {
+  background: linear-gradient(270deg, #ff6ec4, #7873f5, #4ade80, #facc15);
+  background-size: 800% 800%;
+  animation: rainbowFlow 6s ease infinite;
+}
+
+@keyframes rainbowFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

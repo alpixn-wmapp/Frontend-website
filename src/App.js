@@ -17,6 +17,8 @@ import Features from "./components/Features";
 import Uicomponents from "./components/Uicomponents";
 import Uicomponents2 from "./components/Uicomponents2";
 import Landing from "./pages/landing";
+import Dashboard from "./pages/dashboard";
+
 function App() {
   return (
     <Router>
@@ -27,6 +29,7 @@ function App() {
         <Route path="uicomponents" element={<Uicomponents />} />
         <Route path="/uicomponents2" element={<Uicomponents2 />} />
         <Route path="/landing" element={<Landing />} />
+        <Route path="dashboard" element={<Dashboard />} />
 
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />

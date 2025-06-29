@@ -15,8 +15,7 @@ const Card = ({ image, title, description, avatar, projectName, forks }) => {
   return (
     <div className=" flex flex-col justify-between w-full h-[475px] max-w-md bg-[linear-gradient(to_bottom_left,_#231f0c,_#061927,_#231f0c)] p-4 rounded-2xl shadow-xl text-white">
       <div>
-        {" "}
-        <div className=" rounded-xl overflow-hidden h-[60%] mb-4">
+        <div className=" rounded-xl overflow-hidden min-h-[60%] mb-4">
           <img src={image} alt={title} className="w-full object-cover" />
         </div>
         {/* Description */}
