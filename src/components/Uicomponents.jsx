@@ -49,20 +49,7 @@ const Uicomponents = () => {
 
         <div className="px-10 pt-10 relative">
           {/* Top Navigation Buttons */}
-          <div className="flex justify-between mb-6">
-            <button
-              onClick={() => navigate("/features")}
-              className="px-4 py-2 text-sm bg-white text-black rounded hover:bg-gray-200"
-            >
-              ← Back to Features
-            </button>
-            <button
-              onClick={() => navigate("/uicomponents2")}
-              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
-            >
-              Continue to Theme Setup →
-            </button>
-          </div>
+          
 
           {/* Filter Tabs */}
           <div className="flex flex-wrap gap-4 justify-start mb-6">
@@ -106,6 +93,20 @@ const Uicomponents = () => {
           <div className="flex justify-center mt-8">
             <button className="px-6 py-2 text-sm text-white border border-white/20 rounded hover:border-blue-500 hover:text-blue-400 transition">
               Load More Templates
+            </button>
+          </div>
+          <div className="flex justify-between mb-6">
+            <button
+              onClick={() => navigate("/features")}
+              className="px-4 py-2 text-sm bg-white text-black rounded hover:bg-gray-200"
+            >
+              ← Back to Features
+            </button>
+            <button
+              onClick={() => navigate("/uicomponents2")}
+              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+            >
+              Continue to Theme Setup →
             </button>
           </div>
         </div>
