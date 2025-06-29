@@ -18,7 +18,7 @@ import Uicomponents from "./components/Uicomponents";
 import Uicomponents2 from "./components/Uicomponents2";
 import Landing from "./pages/landing";
 import Dashboard from "./pages/dashboard";
-
+import Apptype from './components/Apptype';
 function App() {
   return (
     <Router>
@@ -30,7 +30,7 @@ function App() {
         <Route path="/uicomponents2" element={<Uicomponents2 />} />
         <Route path="/landing" element={<Landing />} />
         <Route path="dashboard" element={<Dashboard />} />
-
+        <Route path="/apptype" element={<Apptype />} />
         <Route path="/frame2" element={<Frame2 />} />
         <Route path="/frame3" element={<Frame3 />} />
         <Route path="/frame4" element={<Frame4 />} />
