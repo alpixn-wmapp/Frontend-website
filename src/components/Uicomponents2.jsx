@@ -184,7 +184,7 @@ const Uicomponents2 = () => {
         </div>
       ))}
       <div className="flex items-center justify-center border rounded-lg h-34 cursor-pointer hover:border-blue-500">
-        <span className="text-xs text-gray-400">+ Choose Image</span>
+        <span className="text-xs text-gray-400"> + Choose Image</span>
       </div>
     </div>
   </div>
