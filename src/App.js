@@ -19,6 +19,11 @@ import Uicomponents2 from "./components/Uicomponents2";
 import Landing from "./pages/landing";
 import Dashboard from "./pages/dashboard";
 import Apptype from './components/Apptype';
+import LogicWorkflowPage from './pages/LogicWorkflowPage';
+import ExportProjectsPage from './pages/ExportProjectsPage';
+import Signup from './pages/Signup';
+import Signin from './pages/Signin';
+
 function App() {
   return (
     <Router>
@@ -41,6 +46,16 @@ function App() {
         <Route path="/frame9" element={<Frame9 />} />
         <Route path="/frame10" element={<Frame10 />} />
         <Route path="/frame11" element={<Frame11 />} />
+
+        {/* 🟪 Logic & Workflow Page */}
+        <Route path="/logic-workflow" element={<LogicWorkflowPage />} />
+
+        {/* 🟧 Export Projects Page */}
+        <Route path="/export-projects" element={<ExportProjectsPage />} />
+      
+
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
       </Routes>
     </Router>
   );
