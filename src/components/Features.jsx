@@ -68,7 +68,22 @@ function Features() {
               ))}
             </div>
           </div>
+           <div className="flex justify-between mt-10 pl-6">
+    <button
+      onClick={() => navigate("/apptype")}
+      className="px-4 py-2 text-sm text-white bg-transparent border border-white/30 rounded hover:border-white/60"
+    >
+      ←Back to App Type
+    </button>
+    <button
+      onClick={() => navigate("/uicomponents")}
+     className="bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg"
+    >
+      Continue To Ui Components →
+    </button>
+  </div>
         </div>
+        
       </div>
     </div>
   );

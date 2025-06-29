@@ -10,11 +10,52 @@ const uiThemes = [
   { title: "Minimal Theme", image: "/images/uitheme4.png" },
 ];
 const palettes = [
-  ["#f0e5e0", "#333", "#777", "#fa5", "#e65a3a"],
-  ["#b9e1dc", "#3a8888", "#1c6464", "#0a3333", "#062020"],
-  ["#031c32", "#064570", "#0772b0", "#1999d3", "#cfd9df"],
-    ["#1a1a1a", "#2c3e50", "#f39c12", "#d35400", "#c0392b"]
+  [
+    "#f0e5e0", // light warm beige
+    "#d8c7be", // added warm light taupe
+    "#b8a59a", // added muted brownish taupe
+    "#777", 
+    "#555",    // added darker gray for depth
+    "#333", 
+    "#fa5", 
+    "#e65a3a"
+  ],
+
+  [
+    "#b9e1dc", 
+    "#6fcfc6", 
+    "#3a8888", 
+    "#2f6e6e", 
+    "#1c6464", 
+    "#0f4a4a", 
+    "#0a3333", 
+    "#062020"
+  ],
+
+  [
+    "#031c32", 
+    "#043456", 
+    "#064570", 
+    "#075e90", 
+    "#0772b0", 
+    "#1999d3", 
+    "#68b8e0", 
+    "#cfd9df"
+  ],
+
+  [
+    "#1a1a1a", 
+    "#2c3e50", 
+    "#3e5870",  // added soft steel gray
+    "#f39c12", 
+    "#e67e22",  // added softer orange
+    "#d35400", 
+    "#c0392b", 
+    "#992d22"   // added deep dark red
+  ]
 ];
+
+
 
 const Uicomponents2 = () => {
   const [selectedTheme, setSelectedTheme] = useState("Dark Theme");
@@ -42,14 +83,14 @@ const Uicomponents2 = () => {
         <Header />
        <div className="px-10 py-8 relative">
   {/* Vertical Step Progress Line */}
-  <div className="absolute left-0 top-28 h-[47%] ml-5 mt-9 w-6 flex flex-col items-center z-10">
+  <div className="absolute left-0 top-28 h-[52%] ml-5 mt-9 w-6 flex flex-col items-center z-10">
     {/* Line */}
     <div className="w-[2px] bg-blue-500 flex-1 mt-2"></div>
 
     {/* Dots */}
     <div className="absolute  top-0 w-4 h-4 rounded-full bg-[#0d1a2a] border-4 border-blue-500"></div>
-    <div className="absolute top-40 w-4 h-4 rounded-full bg-[#0d1a2a] border-4 border-blue-500"></div>
-    <div className="absolute top-[21rem] w-4 h-4 rounded-full bg-[#0d1a2a] border-4 border-blue-500"></div>
+    <div className="absolute top-[13.5rem] w-4 h-4 rounded-full bg-[#0d1a2a] border-4 border-blue-500"></div>
+    <div className="absolute top-[27rem] w-4 h-4 rounded-full bg-[#0d1a2a] border-4 border-blue-500"></div>
   </div>
 
   {/* Content */}
@@ -92,7 +133,7 @@ const Uicomponents2 = () => {
   <h3 className="text-md  mb-2 font-medium">Color Palette Grid</h3>
   
   {/* Grid layout for 3 items per row */}
-  <div className="grid pl-0 grid-cols-1   m-8 ml-0 px-6 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <div className="grid pl-0 grid-cols-1   m-8 ml-0 px-6 sm:grid-cols-2 md:grid-cols-3 gap-6">
     {palettes.map((palette, idx) => (
       <div
         key={idx}
@@ -106,7 +147,7 @@ const Uicomponents2 = () => {
       >
         <div className="rounded-xl flex flex-row">
           {palette.map((color, i) => (
-            <div key={i} className="w-7 h-10" style={{ backgroundColor: color }}></div>
+            <div key={i} className="w-8 h-10" style={{ backgroundColor: color }}></div>
           ))}
         </div>
       </div>
@@ -142,7 +183,7 @@ const Uicomponents2 = () => {
           <p className="text-xs p-2 text-center bg-[#091c2b]">Lorem ipsum</p>
         </div>
       ))}
-      <div className="flex items-center justify-center border rounded-lg h-24 cursor-pointer hover:border-blue-500">
+      <div className="flex items-center justify-center border rounded-lg h-34 cursor-pointer hover:border-blue-500">
         <span className="text-xs text-gray-400">+ Choose Image</span>
       </div>
     </div>
@@ -158,7 +199,7 @@ const Uicomponents2 = () => {
     </button>
     <button
       onClick={() => navigate("/logicworkflow")}
-      className="px-4 py-2 text-sm text-white bg-yellow-500 rounded hover:bg-yellow-600"
+     className="bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg"
     >
       Continue To Workflow Logic →
     </button>
