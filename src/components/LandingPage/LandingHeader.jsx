@@ -1,5 +1,4 @@
 import React from "react";
-// import logo from "../../../public/images/logo.svg";
 
 const LandingHeader = () => {
   return (

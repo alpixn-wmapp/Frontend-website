@@ -11,10 +11,9 @@ const Landing = () => {
         <LandingHeader />
         <Hero />
         <Community />
-        {/* <div className="border-2"> */}
-        {/* <GetStarted /> */}
-        <Footer />
-        {/* </div> */}
+        <div className="">
+          <Footer />
+        </div>
       </div>
     </>
   );
