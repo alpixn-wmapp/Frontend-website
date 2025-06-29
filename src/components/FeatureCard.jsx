@@ -9,7 +9,7 @@ const FeatureCard = ({ title, description, image, active, onToggle }) => {
         <img
           src={image}
           alt={title}
-          className="w-full h-40 object-cover rounded-md mb-3"
+          className="w-full   h-40 object-cover rounded-md mb-3"
         />
         <h3 className="text-md  mb-1">{title}</h3>
         <p className="text-sm text-gray-300 pt-2 mb-4">{description}</p>
