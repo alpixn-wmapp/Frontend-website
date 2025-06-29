@@ -16,6 +16,7 @@ import Frame11 from './pages/frame11';
 import Features from './components/Features';
 import Uicomponents from './components/Uicomponents';
 import Uicomponents2 from './components/Uicomponents2';
+import Apptype from './components/Apptype';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="features" element={<Features />} />
         <Route path="uicomponents" element={<Uicomponents />} />
          <Route path="/uicomponents2" element={<Uicomponents2 />} />
+          <Route path="/apptype" element={<Apptype />} />
        
 
         <Route path="/frame2" element={<Frame2 />} />
