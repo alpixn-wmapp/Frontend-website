@@ -70,17 +70,19 @@ const Uicomponents2 = () => {
       className="flex min-h-screen text-white bg-[#0d1a2a]"
       style={{
         backgroundImage: `
-          radial-gradient(circle at left top, rgb(0 0 0), transparent 40%),
-          radial-gradient(circle at right center, rgb(9 37 76), transparent 40%),
-          radial-gradient(circle at left bottom, rgb(3 21 44), transparent 40%),
-          radial-gradient(circle at 85% 75%, rgb(7 22 41), transparent 50%)
-        `,
+      radial-gradient(circle at left top, rgb(0 0 0), transparent 40%),
+      radial-gradient(circle at right center, rgb(9 37 76), transparent 40%),
+      radial-gradient(circle at left bottom, rgb(3 21 44), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgb(7 22 41), transparent 50%)
+      `,
         backgroundColor: "rgb(4 10 17)",
         minHeight: "100vh",
         color: "white",
       }}
     >
-      <Sidebar />
+      <div>
+        <Sidebar />
+      </div>
       <div className="flex-1 overflow-y-auto">
         <Header />
         <div className="px-10 py-8 relative">
