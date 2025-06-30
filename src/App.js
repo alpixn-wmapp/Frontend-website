@@ -31,12 +31,12 @@ function App() {
       {" "}
       <Router>
         <Routes>
-          <Route path="/" element={<Frame1 />} />
+          <Route path="/" element={<Landing />} />
 
           <Route path="features" element={<Features />} />
           <Route path="ui-components" element={<Uicomponents />} />
           <Route path="/ui-components2" element={<Uicomponents2 />} />
-          <Route path="/landing" element={<Landing />} />
+          {/* <Route path="/landing" element={<Landing />} /> */}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="/app-type" element={<Apptype />} />
           <Route path="/frame2" element={<Frame2 />} />
