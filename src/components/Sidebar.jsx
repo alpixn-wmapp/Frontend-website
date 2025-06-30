@@ -17,31 +17,52 @@ import { NavLink, useLocation, Navigate } from "react-router-dom";
 const navItemsTop = [
   { name: "App Type", icon: <FaShapes />, path: "/app-type" },
   { name: "Features", icon: <FaCubes />, path: "/features" },
-  { name: "UI Components", icon: <FaList />, path: "/ui-components" },
+  {
+    name: "UI Components",
+    icon: <FaList />,
+    path: "/ui-components2",
+    matchPaths: ["/ui-components", "/ui-components2"], // Match both steps
+  },
 ];
 
 const navItemsBottom = [
-  { name: "Logic Workflow", icon: <FaProjectDiagram />, path: "/logic-workflow" },
-  { name: "Export", icon: <FaFileExport />, path: "/export-projects" },
+  {
+    name: "Logic Workflow",
+    icon: <FaProjectDiagram />,
+    path: "/logic-workflow",
+  },
+  { name: "Export", icon: <FaFileExport />, path: "/export-project" },
 ];
 
-// Reusable NavItem
-const NavItem = ({ name, icon, path, onClick, collapsed }) => (
-  <NavLink
-    to={path}
-    className={({ isActive }) =>
-      `flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap overflow-hidden ${
+// Reusable NavItem with matchPaths support
+const NavItem = ({
+  name,
+  icon,
+  path,
+  onClick,
+  collapsed,
+  matchPaths = [path],
+}) => {
+  const location = useLocation();
+  const isActive = matchPaths.some((matchPath) =>
+    location.pathname.startsWith(matchPath)
+  );
+
+  return (
+    <NavLink
+      to={path}
+      className={`flex items-center gap-3 px-4 py-2 rounded-lg transition-all duration-200 whitespace-nowrap overflow-hidden ${
         isActive
           ? "bg-white text-blue-500 font-semibold shadow"
           : "text-white hover:bg-[#0a324f]"
-      }`
-    }
-    onClick={onClick}
-  >
-    <span className="text-lg">{icon}</span>
-    {!collapsed && <span className="text-sm">{name}</span>}
-  </NavLink>
-);
+      }`}
+      onClick={onClick}
+    >
+      <span className="text-lg">{icon}</span>
+      {!collapsed && <span className="text-sm">{name}</span>}
+    </NavLink>
+  );
+};
 
 const Sidebar = () => {
   const location = useLocation();
@@ -50,7 +71,7 @@ const Sidebar = () => {
 
   // Redirect root path
   if (location.pathname === "/") {
-    return <Navigate to="/export-projects" replace />;
+    return <Navigate to="/export-project" replace />;
   }
 
   const handleLogout = () => {
@@ -118,7 +139,7 @@ const Sidebar = () => {
           ))}
         </div>
 
-        <div className="h-6" />
+        <div className="h-2" />
 
         {/* Bottom Nav Items */}
         <div className="flex flex-col gap-3">
@@ -133,7 +154,9 @@ const Sidebar = () => {
         </div>
 
         {/* Logout Button */}
-        <div className={`absolute bottom-4 ${isCollapsed ? "left-2" : "left-4"}`}>
+        <div
+          className={`absolute bottom-4 ${isCollapsed ? "left-2" : "left-4"}`}
+        >
           <button
             onClick={handleLogout}
             className="flex items-center gap-3 px-2 py-2 text-white hover:text-red-400 transition"

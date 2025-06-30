@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // ✅ React Router hook
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import initialFeatures from "../data/features2";
+import { useAppContext } from "../context/contextAPI";
 
 const categories = [
   "Landing Pages",
@@ -18,15 +19,9 @@ const categories = [
 const Uicomponents = () => {
   const [features, setFeatures] = useState(initialFeatures);
   const [activeCategory, setActiveCategory] = useState("Landing Pages");
-
-  const navigate = useNavigate(); // ✅ Initialize navigation
-
-  const toggleFeature = (index) => {
-    const updated = features.map((feature, i) =>
-      i === index ? { ...feature, active: !feature.active } : feature
-    );
-    setFeatures(updated);
-  };
+  // const [selectedCard, setSelectedCard] = useState(null);
+  const { theme, setTheme } = useAppContext();
+  const navigate = useNavigate();
 
   return (
     <div
@@ -48,9 +43,6 @@ const Uicomponents = () => {
         <Header />
 
         <div className="px-10 pt-10 relative">
-          {/* Top Navigation Buttons */}
-          
-
           {/* Filter Tabs */}
           <div className="flex flex-wrap gap-4 justify-start mb-6">
             {categories.map((cat) => (
@@ -73,7 +65,12 @@ const Uicomponents = () => {
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                className="bg-[#06172d] border border-blue-500/10 hover:border-blue-500/40 rounded-xl overflow-hidden shadow-lg transition-all"
+                onClick={() => setTheme(idx)}
+                className={`cursor-pointer bg-[#06172d] border rounded-xl overflow-hidden shadow-lg transition-all ${
+                  theme === idx
+                    ? "border-blue-500 border-[2px]"
+                    : "border-blue-500/10 hover:border-blue-500/40"
+                }`}
               >
                 <img
                   src={feature.image}
@@ -81,9 +78,7 @@ const Uicomponents = () => {
                   className="w-full h-40 object-cover"
                 />
                 <div className="p-1">
-                  <p className="text-sm text-gray-400">
-                    {feature.description}
-                  </p>
+                  <p className="text-sm text-gray-400">{feature.description}</p>
                 </div>
               </div>
             ))}
@@ -95,18 +90,20 @@ const Uicomponents = () => {
               Load More Templates
             </button>
           </div>
-          <div className="flex justify-between mb-6">
+
+          {/* Navigation Buttons */}
+          <div className="flex justify-between mb-6 mt-4">
             <button
-              onClick={() => navigate("/features")}
+              onClick={() => navigate("/ui-components2")}
               className="px-4 py-2 text-sm bg-white text-black rounded hover:bg-gray-200"
             >
-              ← Back to Features
+              ← Back to App Interface
             </button>
             <button
-              onClick={() => navigate("/uicomponents2")}
+              onClick={() => navigate("/logic-workflow")}
               className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
             >
-              Continue to Theme Setup →
+              Continue to Logic Workflow →
             </button>
           </div>
         </div>

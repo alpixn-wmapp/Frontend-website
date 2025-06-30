@@ -1,13 +1,18 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import { CiCamera } from "react-icons/ci";
 import { FaFigma } from "react-icons/fa";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { FiPaperclip } from "react-icons/fi";
 import { MdOutlineDashboard } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import { PiCalculatorThin, PiGlobeLight, PiStarFourFill } from "react-icons/pi";
 import "../../../src/custom.css";
+import { useAppContext } from "../../context/contextAPI";
 
 const Hero = () => {
+  const navigate = useNavigate();
+  const { setAppIdea } = useAppContext();
+  const [ideaText, setIdeaText] = useState("");
   const videoRef = useRef(null);
   const buttons = [
     { icon: <CiCamera size={20} />, label: "Clone a Screenshot" },
@@ -77,6 +82,8 @@ const Hero = () => {
           <div className="w-full">
             <textarea
               rows={5}
+              value={ideaText}
+              onChange={(e) => setIdeaText(e.target.value)}
               className="outline-none border-none w-full bg-transparent appearance-none resize-none overflow-y-auto thin-scrollbar"
               placeholder="Ask us to create a prototype..."
             />
@@ -94,7 +101,13 @@ const Hero = () => {
               <button className="flex items-center gap-1 text-sm text-white/80 hover:text-white">
                 <PiGlobeLight size={20} /> Public
               </button>
-              <button className="bg-white text-black rounded-full p-2 shadow-md transition">
+              <button
+                className="bg-white text-black rounded-full p-2 shadow-md transition"
+                onClick={() => {
+                  setAppIdea(ideaText);
+                  navigate("/app-type");
+                }}
+              >
                 <FaArrowUpLong />
               </button>
             </div>

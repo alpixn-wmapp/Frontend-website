@@ -1,8 +1,10 @@
-import React from 'react';
-import Sidebar from '../components/Sidebar';
-import Topbar from '../components/Topbar';
+import React from "react";
+import Sidebar from "../components/Sidebar";
+import Topbar from "../components/Topbar";
+import { useNavigate } from "react-router-dom";
 
 const LogicWorkflowPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-b from-[#021728] to-[#05253f] text-white overflow-hidden">
       {/* Sidebar */}
@@ -17,7 +19,9 @@ const LogicWorkflowPage = () => {
         <div className="px-4 md:px-10 pt-6">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
             <div>
-              <h2 className="text-xl md:text-2xl font-bold">Visual Workflow Builder</h2>
+              <h2 className="text-xl md:text-2xl font-bold">
+                Visual Workflow Builder
+              </h2>
               <p className="text-sm text-gray-300 mt-1">
                 Build And Connect Your AI Logic With Simple, Visual Steps.
               </p>
@@ -63,7 +67,12 @@ const LogicWorkflowPage = () => {
 
         {/* Bottom Proceed Button */}
         <div className="flex justify-center pb-4 px-4">
-          <button className="border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-black transition text-sm w-full max-w-xs">
+          <button
+            className="border border-white text-white px-6 py-2 rounded hover:bg-white hover:text-black transition text-sm w-full max-w-xs"
+            onClick={() => {
+              navigate("/export-project");
+            }}
+          >
             Proceed To App Builder
           </button>
         </div>
@@ -73,16 +82,17 @@ const LogicWorkflowPage = () => {
 };
 
 // Reusable Step Box
-const Step = ({ label, shape = 'rect' }) => {
-  const baseClasses = 'flex items-center justify-center text-xs font-medium text-white shadow text-center px-2';
+const Step = ({ label, shape = "rect" }) => {
+  const baseClasses =
+    "flex items-center justify-center text-xs font-medium text-white shadow text-center px-2";
   const shapeStyle =
-    shape === 'diamond'
-      ? 'w-20 h-20 rotate-45 bg-[#0f1d2d] border border-blue-400'
-      : 'min-w-[100px] h-12 rounded bg-[#0f1d2d] border border-blue-400';
+    shape === "diamond"
+      ? "w-20 h-20 rotate-45 bg-[#0f1d2d] border border-blue-400"
+      : "min-w-[100px] h-12 rounded bg-[#0f1d2d] border border-blue-400";
 
   return (
     <div className={`${baseClasses} ${shapeStyle}`}>
-      <div className={shape === 'diamond' ? '-rotate-45' : ''}>{label}</div>
+      <div className={shape === "diamond" ? "-rotate-45" : ""}>{label}</div>
     </div>
   );
 };

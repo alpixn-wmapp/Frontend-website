@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAppContext } from "../context/contextAPI";
 
 const Apptype = () => {
-   const navigate = useNavigate(); 
-  const [appIdea, setAppIdea] = useState(
-    `Smart Reminder Bot is an intelligent task assistant that adapts to user habits. Unlike basic reminder apps, it learns from your behavior and schedules context-aware alerts tailored to your routine. It integrates with calendars, emails, and messaging apps to provide timely nudges, ensuring you never miss a deadline or an important task.
-
-With habit tracking, it recognizes patterns like reminding you to drink water at work or to prepare for meetings in advance. Users can customize notification intensity, from gentle nudges to urgent alerts. Voice-enabled interactions and a sleek UI make it a seamless companion for productivity.`
-  );
-
+  const navigate = useNavigate();
+  const { appIdea, setAppIdea } = useAppContext();
+  const [error, setError] = useState("");
   const [selectedStyle, setSelectedStyle] = useState("");
+  //   const DefaultAppIdea = `Smart Reminder Bot is an intelligent task assistant that adapts to user habits. Unlike basic reminder apps, it learns from your behavior and schedules context-aware alerts tailored to your routine. It integrates with calendars, emails, and messaging apps to provide timely nudges, ensuring you never miss a deadline or an important task.
+
+  // With habit tracking, it recognizes patterns like reminding you to drink water at work or to prepare for meetings in advance. Users can customize notification intensity, from gentle nudges to urgent alerts. Voice-enabled interactions and a sleek UI make it a seamless companion for productivity.`;
+
+  const handleBuildClick = () => {
+    if (!appIdea.trim()) {
+      setError("Please describe your app idea before continuing !");
+      return;
+    }
+
+    setError("");
+    navigate("/features");
+  };
 
   return (
     <div
@@ -35,12 +45,12 @@ With habit tracking, it recognizes patterns like reminding you to drink water at
             Build Intelligent Apps At The Speed Of Thought
           </h2>
           <p className="text-center text-gray-300 mb-8 max-w-2xl">
-            Describe, Customize, And Generate Fully-Functional AI-Powered Apps In Minutes. No Code, Just Pure Creativity.
+            Describe, Customize, And Generate Fully-Functional AI-Powered Apps
+            In Minutes. No Code, Just Pure Creativity.
           </p>
 
           {/* Grouped block with border */}
           <div className="rounded-xl p-4 w-full max-w-2xl mb-6 bg-gradient-to-br from-[#06172d] to-[#1f1e11] border-[1.5px] border-white/40 flex flex-col items-center">
-
             {/* App idea box */}
             <div className="bg-[#132c44] rounded-xl p-4 w-full border border-blue-500/20 mb-4">
               <textarea
@@ -50,15 +60,20 @@ With habit tracking, it recognizes patterns like reminding you to drink water at
                 placeholder="Describe your app idea here..."
               />
             </div>
-             {/* Build button (inside border block) */}
+            {/* error */}
+            {error && (
+              <div className="text-red-400 text-sm mb-4 w-full text-center px-1">
+                {error}
+              </div>
+            )}
+            {/* Build button (inside border block) */}
             <button
               disabled={!selectedStyle}
-              onClick={()=> navigate("/features")}
-             className={`bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg `}
-             
+              onClick={() => navigate("/features")}
+              className={`bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg `}
             >
               <img className="inline mr-2" src="/images/star.svg" alt="" />
-               Build With AI
+              Build With AI
             </button>
 
             {/* Style buttons */}
@@ -77,23 +92,21 @@ With habit tracking, it recognizes patterns like reminding you to drink water at
                 </button>
               ))}
             </div>
-
-           
           </div>
 
           {/* Navigation buttons */}
           <div className="flex justify-between mb-5 mr-5 mt-10 pl-6 w-full max-w-5xl">
             <button
-              onClick={() => navigate("/features")}
+              onClick={() => navigate("/landing")}
               className="px-4 py-2 text-sm text-white bg-transparent border border-white/30 rounded hover:border-white/60"
             >
-              ← Back To Features
+              ← Back To Home
             </button>
             <button
-              onClick={() => navigate("/logicworkflow")}
-             className="bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg"
+              onClick={handleBuildClick}
+              className="bg-gradient-to-r from-yellow-500 to-blue-600 font-light py-2 px-4 rounded-lg"
             >
-              Continue To Workflow Logic →
+              Continue To Features →
             </button>
           </div>
         </div>
