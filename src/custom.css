@@ -54,3 +54,27 @@
     background-position: 0% 50%;
   }
 }
+
+@keyframes snake {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+.snake-border::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  border-radius: 1rem;
+  background: linear-gradient(270deg, #0045b4, #ffbc41, #3b82f6, #33e976);
+  background-size: 400% 400%;
+  animation: snake 5s linear infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 2px;
+}

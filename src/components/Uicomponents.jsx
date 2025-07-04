@@ -17,6 +17,10 @@ const categories = [
 ];
 
 const Uicomponents = () => {
+  const initialVisible = 9;
+  const [visibleCount, setVisibleCount] = useState(initialVisible);
+  const templatesPerPage = 3;
+
   const [features, setFeatures] = useState(initialFeatures);
   const [activeCategory, setActiveCategory] = useState("Landing Pages");
   // const [selectedCard, setSelectedCard] = useState(null);
@@ -44,7 +48,7 @@ const Uicomponents = () => {
 
         <div className="px-10 pt-10 relative">
           {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-4 justify-start mb-6">
+          {/* <div className="flex flex-wrap gap-4 justify-start mb-6">
             {categories.map((cat) => (
               <button
                 key={cat}
@@ -58,17 +62,17 @@ const Uicomponents = () => {
                 {cat}
               </button>
             ))}
-          </div>
+          </div> */}
 
           {/* Feature Cards Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, idx) => (
+            {features.slice(0, visibleCount).map((feature, idx) => (
               <div
                 key={idx}
                 onClick={() => setTheme(idx)}
                 className={`cursor-pointer bg-[#06172d] border rounded-xl overflow-hidden shadow-lg transition-all ${
                   theme === idx
-                    ? "border-blue-500 border-[2px]"
+                    ? "border-blue-500 border-[2px] shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
                     : "border-blue-500/10 hover:border-blue-500/40"
                 }`}
               >
@@ -77,7 +81,8 @@ const Uicomponents = () => {
                   alt={feature.title}
                   className="w-full h-40 object-cover"
                 />
-                <div className="p-1">
+                <div className="p-2">
+                  <p className="">{feature.title}</p>
                   <p className="text-sm text-gray-400">{feature.description}</p>
                 </div>
               </div>
@@ -86,22 +91,36 @@ const Uicomponents = () => {
 
           {/* Load More Button */}
           <div className="flex justify-center mt-8">
-            <button className="px-6 py-2 text-sm text-white border border-white/20 rounded hover:border-blue-500 hover:text-blue-400 transition">
-              Load More Templates
-            </button>
+            {visibleCount < features.length ? (
+              <button
+                onClick={() =>
+                  setVisibleCount((prev) => prev + templatesPerPage)
+                }
+                className="px-6 py-2 text-sm text-white border border-white/20 rounded hover:border-blue-500 hover:text-blue-400 transition"
+              >
+                Load More Templates
+              </button>
+            ) : (
+              <button
+                onClick={() => setVisibleCount(initialVisible)}
+                className="px-6 py-2 text-sm text-white border border-white/20 rounded hover:border-red-400 hover:text-red-400 transition"
+              >
+                Show Less
+              </button>
+            )}
           </div>
 
           {/* Navigation Buttons */}
           <div className="flex justify-between mb-6 mt-4">
             <button
               onClick={() => navigate("/ui-components2")}
-              className="px-4 py-2 text-sm bg-white text-black rounded hover:bg-gray-200"
+              className="px-4 border py-2 text-sm bg-transparent text-white rounded hover:bg-gray-200"
             >
               ← Back to App Interface
             </button>
             <button
               onClick={() => navigate("/logic-workflow")}
-              className="px-4 py-2 text-sm bg-blue-500 text-white rounded hover:bg-blue-600"
+              className="px-4 py-2 text-smtext-white rounded-md bg-gradient-to-r from-yellow-500 to-blue-600 "
             >
               Continue to Logic Workflow →
             </button>

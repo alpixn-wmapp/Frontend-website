@@ -24,17 +24,7 @@ const Apptype = () => {
   };
 
   return (
-    <div
-      className="flex h-screen text-white bg-[#0d1a2a]"
-      style={{
-        backgroundImage: `
-          radial-gradient(circle at left top, rgb(0 0 0), transparent 40%),
-          radial-gradient(circle at right center, rgb(9 37 76), transparent 40%),
-          radial-gradient(circle at left bottom, rgb(3 21 44), transparent 40%),
-          radial-gradient(circle at 85% 75%, rgb(7 22 41), transparent 50%)
-        `,
-      }}
-    >
+    <div className="flex h-screen text-white bg-gradient-to-br from-[#000] to-[#05253f]">
       <Sidebar />
       <div className="flex-1 overflow-y-auto">
         <Header />
@@ -52,14 +42,15 @@ const Apptype = () => {
           {/* Grouped block with border */}
           <div className="rounded-xl p-4 w-full max-w-2xl mb-6 bg-gradient-to-br from-[#06172d] to-[#1f1e11] border-[1.5px] border-white/40 flex flex-col items-center">
             {/* App idea box */}
-            <div className="bg-[#132c44] rounded-xl p-4 w-full border border-blue-500/20 mb-4">
+            <div className="bg-blue-500/10 backdrop-blur-[5px] rounded-xl p-4 w-full border border-blue-500/20 mb-4">
               <textarea
                 value={appIdea}
                 onChange={(e) => setAppIdea(e.target.value)}
-                className="w-full h-48 bg-transparent text-white text-sm resize-none focus:outline-none"
+                className="w-full h-48 bg-transparent text-white text-sm  resize-none focus:outline-none"
                 placeholder="Describe your app idea here..."
               />
             </div>
+
             {/* error */}
             {error && (
               <div className="text-red-400 text-sm mb-4 w-full text-center px-1">
@@ -97,7 +88,7 @@ const Apptype = () => {
           {/* Navigation buttons */}
           <div className="flex justify-between mb-5 mr-5 mt-10 pl-6 w-full max-w-5xl">
             <button
-              onClick={() => navigate("/landing")}
+              onClick={() => navigate("/")}
               className="px-4 py-2 text-sm text-white bg-transparent border border-white/30 rounded hover:border-white/60"
             >
               ← Back To Home

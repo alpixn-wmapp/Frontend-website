@@ -3,45 +3,13 @@ import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/contextAPI";
+import { palettes } from "../data/palettes";
 
 const uiThemes = [
   { title: "Light Theme", image: "/images/uitheme1.png" },
   { title: "Neon Theme", image: "/images/uitheme2.png" },
   { title: "Dark Theme", image: "/images/uitheme3.png" },
   { title: "Minimal Theme", image: "/images/uitheme4.png" },
-];
-const palettes = [
-  ["#f0e5e0", "#d8c7be", "#b8a59a", "#777", "#555", "#333", "#fa5", "#e65a3a"],
-  [
-    "#b9e1dc",
-    "#6fcfc6",
-    "#3a8888",
-    "#2f6e6e",
-    "#1c6464",
-    "#0f4a4a",
-    "#0a3333",
-    "#062020",
-  ],
-  [
-    "#031c32",
-    "#043456",
-    "#064570",
-    "#075e90",
-    "#0772b0",
-    "#1999d3",
-    "#68b8e0",
-    "#cfd9df",
-  ],
-  [
-    "#1a1a1a",
-    "#2c3e50",
-    "#3e5870",
-    "#f39c12",
-    "#e67e22",
-    "#d35400",
-    "#c0392b",
-    "#992d22",
-  ],
 ];
 
 const Uicomponents2 = () => {
@@ -57,6 +25,9 @@ const Uicomponents2 = () => {
     theme,
     setTheme,
   } = useAppContext();
+
+  const [showPaletteDialog, setShowPaletteDialog] = useState(false);
+
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -111,7 +82,7 @@ const Uicomponents2 = () => {
                 <div
                   key={idx}
                   onClick={() => setThemeType(themeObj.title)}
-                  className={`bg-gradient-to-br from-[#06172d] to-[#05101c] cursor-pointer border rounded-lg w-32 text-sm overflow-hidden transition-all duration-200 ${
+                  className={`bg-gradient-to-br from-[#06172d] to-[#05101c] cursor-pointer border rounded-lg w-32 text-sm overflow-hidden transition-all duration-200  ${
                     themeType === themeObj.title
                       ? "ring-2 ring-blue-400 ring-offset-1 ring-offset-[#0d1a2a]"
                       : ""
@@ -132,12 +103,12 @@ const Uicomponents2 = () => {
 
           <div className="mb-10 pl-6">
             <h3 className="text-md mb-2 font-medium">Color Palette Grid</h3>
-            <div className="grid pl-0 grid-cols-1 m-8 ml-0 px-6 sm:grid-cols-2 md:grid-cols-3 gap-6">
-              {palettes.map((palette, idx) => (
+            <div className="flex flex-wrap pl-0 grid-cols-1 m-8 ml-0 px-6 sm:grid-cols-2 md:grid-cols-3 gap-6 ">
+              {palettes.slice(0, 4).map((palette, idx) => (
                 <div
                   key={idx}
                   onClick={() => setColorPalette(palette)}
-                  className={`flex items-center px-1 py-1 rounded-lg cursor-pointer transition-all duration-200 ${
+                  className={`flex items-center px-1 py-1 rounded-lg cursor-pointer transition-all w-fit duration-200 ${
                     colorPalette === palette
                       ? "ring-2 ring-blue-500 ring-offset-2 ring-offset-[#0d1a2a]"
                       : "hover:ring-1 hover:ring-white/30"
@@ -147,7 +118,7 @@ const Uicomponents2 = () => {
                     border: "1px solid #1e3a5f",
                   }}
                 >
-                  <div className="rounded-xl flex flex-row">
+                  <div className="rounded-md flex flex-row overflow-hidden">
                     {palette.map((color, i) => (
                       <div
                         key={i}
@@ -159,12 +130,60 @@ const Uicomponents2 = () => {
                 </div>
               ))}
 
-              <button className="flex items-center justify-center gap-2 px-4 py-2 text-sm border rounded-lg text-white border-gray-600 bg-[#0d1a2a] hover:border-blue-400 transition-all duration-200">
+              <button
+                onClick={() => setShowPaletteDialog(true)}
+                className="flex items-center justify-center gap-2 px-4 py-2 text-sm border rounded-lg text-white border-gray-600 bg-[#0d1a2a] hover:border-blue-400 transition-all duration-200"
+              >
                 <img src="/images/pen.svg" alt="pen" />
                 Choose Own Palette
               </button>
             </div>
           </div>
+          {/* palette dialog */}
+          {showPaletteDialog && (
+            <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+              <div className="bg-[#0d1a2a] p-6 rounded-lg border border-gray-600 w-[90%] max-w-2xl relative">
+                <h2 className="text-lg font-semibold mb-4 text-white">
+                  Select a Color Palette
+                </h2>
+
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+                  {palettes.slice(4).map((palette, idx) => (
+                    <div
+                      key={idx}
+                      onClick={() => {
+                        setColorPalette(palette);
+                        setShowPaletteDialog(false);
+                      }}
+                      className={`cursor-pointer p-1 rounded-lg border ${
+                        colorPalette === palette
+                          ? "border-blue-500 ring-2 ring-blue-500"
+                          : "border-gray-600 hover:border-blue-400"
+                      }`}
+                      style={{ backgroundColor: "#06172d" }}
+                    >
+                      <div className="flex overflow-hidden rounded-md">
+                        {palette.map((color, i) => (
+                          <div
+                            key={i}
+                            className="w-6 h-8"
+                            style={{ backgroundColor: color }}
+                          ></div>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => setShowPaletteDialog(false)}
+                  className="absolute top-2 right-3 text-gray-400 hover:text-red-400"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          )}
 
           <div className="mb-10 pl-6">
             <h3 className="text-md mb-2 font-medium">Themes Selection</h3>
@@ -173,10 +192,10 @@ const Uicomponents2 = () => {
                 <div
                   key={idx}
                   onClick={() => setTheme(idx)}
-                  className={`border rounded-lg overflow-hidden cursor-pointer transition-all duration-200 shadow-md ${
+                  className={`border rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ${
                     theme === idx
-                      ? "border-blue-500 shadow-[0_0_10px_2px_rgba(59,130,246,0.7)]"
-                      : "border-gray-600 hover:border-blue-400 hover:shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
+                      ? "border-blue-500 shadow-[0_0_8px_2px_rgba(59,130,246,0.5)]"
+                      : "border-gray-600 hover:border-blue-400 "
                   }`}
                 >
                   <img
@@ -195,7 +214,7 @@ const Uicomponents2 = () => {
                 onClick={() => navigate("/ui-components")}
               >
                 <span className="text-3xl text-gray-400">+</span>
-                <span className="text-xs text-gray-400 mt-1">Choose Image</span>
+                <span className="text-xs text-gray-400 mt-1">Choose Theme</span>
               </div>
             </div>
           </div>

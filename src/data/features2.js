@@ -53,6 +53,24 @@ const features = [
     image: "/images/ui9.png",
     active: false,
   },
+  {
+    title: "Artificial Intelligence",
+    description: "Lorem ipsum dolor sit amet",
+    image: "/images/ui3.png",
+    active: false,
+  },
+  {
+    title: "Welcome to Flash",
+    description: "Lorem ipsum dolor sit amet",
+    image: "/images/ui4.png",
+    active: false,
+  },
+  {
+    title: "Control your financial future easily",
+    description: "Lorem ipsum dolor sit amet",
+    image: "/images/ui5.png",
+    active: false,
+  },
 ];
 
 export default features;

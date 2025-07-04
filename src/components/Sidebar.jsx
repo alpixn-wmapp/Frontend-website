@@ -11,7 +11,7 @@ import {
   FaAngleLeft,
   FaAngleRight,
 } from "react-icons/fa";
-import { NavLink, useLocation, Navigate } from "react-router-dom";
+import { NavLink, useLocation, Navigate, useNavigate } from "react-router-dom";
 
 // Navigation items
 const navItemsTop = [
@@ -65,6 +65,7 @@ const NavItem = ({
 };
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false); // Mobile sidebar toggle
   const [isCollapsed, setIsCollapsed] = useState(false); // Desktop collapse
@@ -118,17 +119,21 @@ const Sidebar = () => {
             {isCollapsed ? <FaAngleRight /> : <FaAngleLeft />}
           </button>
         </div>
-
         {/* Logo */}
-        {!isCollapsed && (
-          <div className="text-white text-lg font-bold mb-6 ml-2 select-none">
-            <span className="text-[#00bcd4]">Neura</span>
-            <span className="text-yellow-400">Forge</span>
-          </div>
-        )}
-
+        <div className="text-white text-lg font-bold mb-6 ml-2 select-none">
+          <img
+            onClick={() => navigate("/")}
+            src={isCollapsed ? "images/logo2.png" : "images/logo.svg"}
+            className="cursor-pointer"
+            alt=""
+          />
+        </div>
         {/* Top Nav Items */}
-        <div className="flex flex-col gap-3">
+        <div
+          className={`flex flex-col ${
+            isCollapsed && "items-center"
+          } gap-3 transition`}
+        >
           {navItemsTop.map((item) => (
             <NavItem
               key={item.name}
@@ -138,9 +143,7 @@ const Sidebar = () => {
             />
           ))}
         </div>
-
         <div className="h-2" />
-
         {/* Bottom Nav Items */}
         <div className="flex flex-col gap-3">
           {navItemsBottom.map((item) => (
@@ -152,7 +155,6 @@ const Sidebar = () => {
             />
           ))}
         </div>
-
         {/* Logout Button */}
         <div
           className={`absolute bottom-4 ${isCollapsed ? "left-2" : "left-4"}`}

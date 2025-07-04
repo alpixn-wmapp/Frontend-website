@@ -75,41 +75,38 @@ const Hero = () => {
         </div>
 
         {/* Input Card */}
-        <div className="w-full flex flex-col gap-2 bg-white/5 backdrop-blur-[5px] border-2 border-blue-100/75 rounded-2xl p-4 max-w-[50%] mt-16">
-          {/* <div className="text-white text-sm mb-4">
-            Ask us to create a prototype...
-          </div> */}
-          <div className="w-full">
-            <textarea
-              rows={5}
-              value={ideaText}
-              onChange={(e) => setIdeaText(e.target.value)}
-              className="outline-none border-none w-full bg-transparent appearance-none resize-none overflow-y-auto thin-scrollbar"
-              placeholder="Ask us to create a prototype..."
-            />
-          </div>
-
-          <div className="flex items-center justify-end gap-4">
-            {/* Top right buttons */}
-            <div className="flex gap-3 items-center text-sm">
-              <button className="flex items-center text-sm gap-1 text-white/80 hover:text-white">
-                <FiPaperclip /> <button>Add file</button>
-              </button>
+        <div className="relative w-full max-w-[50%] mt-16">
+          <div className="snake-border w-full flex flex-col gap-2 bg-white/5 backdrop-blur-[5px] border border-transparent rounded-2xl p-4 relative z-10">
+            <div className="w-full">
+              <textarea
+                rows={5}
+                value={ideaText}
+                onChange={(e) => setIdeaText(e.target.value)}
+                className="outline-none border-none w-full bg-transparent appearance-none resize-none overflow-y-auto thin-scrollbar text-white"
+                placeholder="Ask us to create a prototype..."
+              />
             </div>
-            {/* Bottom right send */}
-            <div className=" flex items-center gap-4">
-              <button className="flex items-center gap-1 text-sm text-white/80 hover:text-white">
-                <PiGlobeLight size={20} /> Public
-              </button>
-              <button
-                className="bg-white text-black rounded-full p-2 shadow-md transition"
-                onClick={() => {
-                  setAppIdea(ideaText);
-                  navigate("/app-type");
-                }}
-              >
-                <FaArrowUpLong />
-              </button>
+
+            <div className="flex items-center justify-end gap-4">
+              <div className="flex gap-3 items-center text-sm">
+                <button className="flex items-center text-sm gap-1 text-white/80 hover:text-white">
+                  <FiPaperclip /> <span>Add file</span>
+                </button>
+              </div>
+              <div className="flex items-center gap-4">
+                <button className="flex items-center gap-1 text-sm text-white/80 hover:text-white">
+                  <PiGlobeLight size={20} /> Public
+                </button>
+                <button
+                  className="bg-white text-black rounded-full p-2 shadow-md transition"
+                  onClick={() => {
+                    setAppIdea(ideaText);
+                    navigate("/app-type");
+                  }}
+                >
+                  <FaArrowUpLong />
+                </button>
+              </div>
             </div>
           </div>
         </div>

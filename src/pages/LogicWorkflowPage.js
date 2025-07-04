@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const LogicWorkflowPage = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-b from-[#021728] to-[#05253f] text-white overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-br from-[#000] to-[#05253f] text-white overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 

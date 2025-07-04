@@ -1,28 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Topbar from "../components/Topbar";
 import { useNavigate } from "react-router-dom";
 import { useAppContext } from "../context/contextAPI";
+// import logo1 from "../../public/images/ui7.png";
+// import logo2 from "../../public/images/ui3.png";
+// import logo3 from "../../public/images/f3.png";
 
 const cards = [
   {
-    title: "Smart Support Chatbot",
-    description: "AI-powered assistant for customer queries.",
-    progress: 95,
+    title: "Desktop",
+    subtitle: "APP",
+    subtitleColor: "text-yellow-400",
+    image: "images/ui7.png",
   },
   {
-    title: "E-commerce Recommender",
-    description: "Suggests products based on user behavior.",
-    progress: 88,
+    title: "Web",
+    subtitle: "APP",
+    subtitleColor: "text-yellow-400",
+    image: "images/ui3.png",
   },
   {
-    title: "Medical FAQ Assistant",
-    description: "Health-related questions with accuracy.",
-    progress: 85,
+    title: "Export",
+    subtitle: "CODE BASE",
+    subtitleColor: "text-blue-400",
+    image: "images/f3.png",
   },
 ];
 
 const ExportProjectsPage = () => {
+  const [hoveredCardIndex, setHoveredCardIndex] = useState(null);
   const navigate = useNavigate();
   const {
     appIdea,
@@ -34,7 +41,7 @@ const ExportProjectsPage = () => {
   } = useAppContext();
 
   const handleExport = () => {
-    console.log("✅ Final App Setup:");
+    console.log("\u2705 Final App Setup:");
     console.log("App Idea:", appIdea);
     console.log("Theme Type:", themeType);
     console.log("Color Palette:", colorPalette);
@@ -44,7 +51,7 @@ const ExportProjectsPage = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row h-screen bg-[#021728] text-white overflow-hidden">
+    <div className="flex flex-col lg:flex-row h-screen bg-gradient-to-br from-[#000] to-[#05253f] text-white overflow-hidden">
       {/* Sidebar */}
       <Sidebar />
 
@@ -83,35 +90,45 @@ const ExportProjectsPage = () => {
               </div>
             </div>
 
-            {/* Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-              {cards.map((card, index) => (
+            {/* Cards Grid (Styled as Image Cards) */}
+            <div className="flex justify-center items-center gap-4 flex-nowrap overflow-hidden max-w-5xl mx-auto">
+              {cards.map((card, idx) => (
                 <div
-                  key={index}
-                  className="bg-[#0f1d2d] border border-blue-400 rounded-xl p-4 w-full max-w-[270px] shadow-lg"
+                  key={idx}
+                  className={`h-[400px] rounded-md overflow-hidden relative border-2 border-blue-500 transition-all duration-700 ease-in-out flex-shrink-0 ${
+                    hoveredCardIndex === idx ? "flex-grow-[1]" : ""
+                  }`}
+                  style={{
+                    backgroundImage: `url(${card.image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    width: "175px",
+                  }}
+                  onMouseEnter={() => setHoveredCardIndex(idx)}
+                  onMouseLeave={() => setHoveredCardIndex(null)}
                 >
-                  <div className="h-36 w-full bg-gray-800 rounded-md mb-3 flex items-center justify-center text-sm text-gray-400">
-                    Project Image
+                  <div className="flex absolute bottom-4 items-center gap-10 left-4 z-10">
+                    <div className="flex flex-col">
+                      <h3 className="text-white text-xl font-bold">
+                        {card.title}
+                      </h3>
+                      <p className={`text-sm font-bold ${card.subtitleColor}`}>
+                        {card.subtitle}
+                      </p>
+                    </div>
+                    {hoveredCardIndex === idx && (
+                      <div className="">
+                        <button className="bg-gradient-to-r from-blue-950 to-blue-500 px-[2rem] rounded-lg py-[.25rem] text-white">
+                          Export
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <h3 className="font-semibold text-lg mb-1">{card.title}</h3>
-                  <p className="text-sm text-gray-300 mb-3">
-                    {card.description}
-                  </p>
-                  <p className="text-sm mb-1">
-                    Progress:{" "}
-                    <span className="text-green-400 font-bold">
-                      {card.progress}%
-                    </span>
-                  </p>
-                  <div className="w-full h-2 bg-gray-700 rounded-full mb-3">
-                    <div
-                      className="h-2 bg-green-400 rounded-full"
-                      style={{ width: `${card.progress}%` }}
-                    ></div>
-                  </div>
-                  <button className="bg-white text-black w-full py-1 rounded hover:bg-gray-200 transition text-sm">
-                    Launch Project
-                  </button>
+                  <div
+                    className={`absolute inset-0 bg-black ${
+                      hoveredCardIndex === idx ? "opacity-20" : "opacity-60"
+                    }`}
+                  />
                 </div>
               ))}
             </div>
